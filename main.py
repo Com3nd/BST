@@ -24,12 +24,17 @@ class TreeNode:
         elif value > node.value:
             self.insert(value, node.right)
 
-    def inorder_traversal(self):
+    def inorder_traversal(self, result: list | None = None):
+        if result is None:
+            result = []
+
         if self.left:
-            self.left.inorder_traversal()
-        print(self.value)
+            self.left.inorder_traversal(result)
+        # print(self.value)
+        result.append(self.value)
         if self.right:
-            self.right.inorder_traversal()
+            self.right.inorder_traversal(result)
+        return result
 
 
 if __name__ == '__main__':
@@ -45,5 +50,5 @@ if __name__ == '__main__':
     tree.insert(11)
     tree.insert(4)
     tree.insert(2)
-    tree.inorder_traversal()
-    print()
+    print(tree.inorder_traversal())
+    print(tree.inorder_traversal())
